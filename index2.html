@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<link rel="stylesheet" type="text/css" href="style.css" media="all" />
+
+	<script src="js/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript" src="pouchdb-2.2.3.min.js"></script>
+	<script type="text/javascript" src="pouchdb.js"></script>		
+	<script src="visability.js"></script>
+</head>
+
+<body>
+<select name="sweets" multiple="multiple">
+<option>Chocolate</option>
+<option>Candy</option>
+<option>Taffy</option>
+<option selected="selected">Caramel</option>
+<option>Fudge</option>
+<option>Cookie</option>
+</select>
+<div id="food"></div>
+
+	<div class="holder">
+	
+	</div>	
+	
+<a href="#" id="pleaseclick" >one visable</a>
+<script>
+
+$("select").change(function () {
+var str = "";
+$("select option:selected").each(function () {
+str += $(this).text() + " ";
+});
+$("#food").text(str);
+})
+.change();
+
+
+// create pouchdb object
+livepouch = new pouchdbSettings();
+	
+var startobject = new visability();
+
+/*
+* click and making visable and hiding
+*
+*/
+$("#pleaseclick").click(function(e) {
+
+		//$("#pleaseclick").hide();
+		//$(".holder").hide();
+		startobject.viewstatus();
+		
+	});
+
+
+</script>
+</body>
+</html>
